@@ -23,8 +23,8 @@ export class FormFieldOverviewExample {
   constructor(private form: FormBuilder) {}
 
   myForm = this.form.group({
-    name: [null],
-    state: [null],
-    phone: [null],
+    name: [null, Validators.required],
+    state: [null, Validators.required],
+    phone: [null, Validators.required],
   });
 }
