@@ -7,7 +7,7 @@
     <form [formGroup]="myForm">
       <mat-form-field fxFlex="25" appearance="outline" class="full-width">
         <mat-label> Name </mat-label>
-        <input type="name" matInput formControlName="name" />
+        <input type="text" matInput formControlName="name" />
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
@@ -20,21 +20,24 @@
       </mat-form-field>
 
       <mat-form-field fxFlex="25" appearance="outline" class="full-width">
-        <mat-label> Phone </mat-label>
-        <input type="number" matInput formControlName="phone" />
+        <mat-label> Email </mat-label>
+        <input type="text" matInput formControlName="email" />
+        <mat-error *ngIf="myForm.get('email')?.errors">
+          Email is required if you choose SP state
+        </mat-error>
       </mat-form-field>
     </form>
   </div>
 
   <div class="full-width submmit-button">
     <button mat-button class="full-width" [disabled]="!myForm.valid">
-      Submeter
+      Submit
     </button>
   </div>
 </div>
 
 <p>Name: {{ myForm.value.name }}</p>
 <p>Item Id: {{ myForm.value.state }}</p>
-<p>Phone: {{ myForm.value.phone }}</p>
+<p>Email: {{ myForm.value.email }}</p>
 
 <p>JSON = {{myForm.value|json}}</p>

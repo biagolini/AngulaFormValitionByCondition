@@ -23,8 +23,21 @@ export class FormFieldOverviewExample {
   constructor(private form: FormBuilder) {}
 
   myForm = this.form.group({
-    name: [null, Validators.required],
     state: [null, Validators.required],
-    phone: [null, Validators.required],
+    name: [null],
+    email: [null],
   });
+
+  ngOnInit(): void {
+    this.myForm.get('state')?.valueChanges.subscribe((value) => {
+      if (value == 0) {
+        this.myForm
+          .get('email')
+          ?.setValidators([Validators.required, Validators.email]);
+      } else {
+        this.myForm.get('email')?.clearValidators();
+      }
+      this.myForm.controls['email'].updateValueAndValidity();
+    });
+  }
 }
