@@ -34,11 +34,10 @@ export class FormFieldOverviewExample {
     // How to subscribe to a form field change
     this.myForm.get('reciveSMS')?.valueChanges.subscribe((value) => {
       if (value == true) {
-        alert('You will recive SMSs');
-        
+        alert('You will receive SMSs');
       } else {
-        alert('You will NOT recive SMSs');
-      }      
+        alert('You will NOT receive SMSs');
+      }
     });
     this.myForm.get('state')?.valueChanges.subscribe((value) => {
       if (value == 0) {
@@ -50,11 +49,10 @@ export class FormFieldOverviewExample {
       }
       this.myForm.controls['email'].updateValueAndValidity();
     });
-
-
   }
 
-  turnPhoneValidators() { // set validators by function behavior
+  turnPhoneValidators() {
+    // set validators by function behavior
     this.myForm.controls['phone'].setValidators(Validators.required);
     this.myForm.controls['phone'].updateValueAndValidity();
   }
